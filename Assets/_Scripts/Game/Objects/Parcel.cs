@@ -12,10 +12,26 @@ public class Parcel : MonoBehaviour
     {
         field = _field;
         coordinates = _coordinates;
+
         resources = new Dictionary<GameData.Resource, float>();
+
+        AddResource(GameData.Resource.Water, 4.5f);
+        AddResource(GameData.Resource.Stuff, 4.5f);
+
+
+
     }
 
-    public void AddResource(GameData.Resource type, float quantity)
+	private void Awake()
+	{
+        resources = new Dictionary<GameData.Resource, float>();
+
+        AddResource(GameData.Resource.Water, 4.5f);
+        AddResource(GameData.Resource.Stuff, 4.5f);
+
+	}
+
+	public void AddResource(GameData.Resource type, float quantity)
     {
         if(resources.ContainsKey(type))
         {
