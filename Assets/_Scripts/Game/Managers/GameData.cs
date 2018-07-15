@@ -23,5 +23,11 @@ public static class GameData
         None
     }
 
+    public enum plantType
+    {
+        Lentils,
+        Tomatoes
+    }
+
    
 }

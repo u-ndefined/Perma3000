@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Parcel : MonoBehaviour
 {
@@ -8,26 +9,12 @@ public class Parcel : MonoBehaviour
     public Dictionary<GameData.Resource, float> resources;
     public HexCoordinates coordinates;
 
-    public Parcel(HexCoordinates _coordinates, Field _field)
-    {
-        field = _field;
-        coordinates = _coordinates;
-
-        resources = new Dictionary<GameData.Resource, float>();
-
-        AddResource(GameData.Resource.Water, 4.5f);
-        AddResource(GameData.Resource.Stuff, 4.5f);
-
-
-
-    }
-
 	private void Awake()
 	{
         resources = new Dictionary<GameData.Resource, float>();
 
-        AddResource(GameData.Resource.Water, 4.5f);
-        AddResource(GameData.Resource.Stuff, 4.5f);
+        AddResource(GameData.Resource.Water, (float)Math.Round(UnityEngine.Random.Range(0, 5.0f), 2));
+        AddResource(GameData.Resource.Stuff, (float)Math.Round(UnityEngine.Random.Range(0,5.0f), 2));
 
 	}
 

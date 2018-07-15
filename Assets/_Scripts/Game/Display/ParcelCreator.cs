@@ -25,18 +25,17 @@ public class ParcelCreator
 
     public static Transform CreateHex(HexCoordinates coordinates, Field field)
     {
-        //GameObject parcelObject = new GameObject("Parcel " + coordinates.x + " " + coordinates.z);
         GameObject parcelObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
         parcelObject.name = "Parcel " + coordinates.x + " " + coordinates.z;
         Parcel parcel = parcelObject.AddComponent<Parcel>();
         parcel.coordinates = coordinates;
         parcel.field = field;
         field.AddParcel(parcel);
-        parcelObject.transform.position = coordinatesToPosition(coordinates);
+        parcelObject.transform.position = CoordinatesToPosition(coordinates);
         return parcelObject.transform;
     }
 
-    public static Vector3 coordinatesToPosition(HexCoordinates c)
+    public static Vector3 CoordinatesToPosition(HexCoordinates c)
     {
         return new Vector3((c.x + c.z * 0.5f) * (HexMetrics.innerRadius * 2f), 0, c.z * (HexMetrics.outerRadius * 1.5f));
     }

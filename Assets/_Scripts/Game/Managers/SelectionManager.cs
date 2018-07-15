@@ -6,24 +6,34 @@ public class SelectionManager : ISingleton<SelectionManager> {
 
     protected SelectionManager(){}
 
-    ResourcesDisplayer displayer;
+    private ResourcesDisplayer ResourcesDisplayer;
+    private GameObject actionPanel;
 
-    Parcel selected;
+    public Parcel selected;
 
-	private void Awake()
-	{
-        displayer = GameObject.Find("ResourcePanel").GetComponent<ResourcesDisplayer>();
+    private void Awake()
+    {
+        ResourcesDisplayer = GameObject.Find("ResourcePanel").GetComponent<ResourcesDisplayer>();
+        actionPanel = GameObject.Find("ActionPanel");
 
-	}
+    }
 
 	private void Start()
 	{
-        displayer.HideResources();
+        Unselect();
 	}
+
+    public void Unselect()
+    {
+        ResourcesDisplayer.HideResources();
+        actionPanel.SetActive(false);
+        selected = null;
+    }
 
 	public void Select(Parcel parcel)
 	{
-        displayer.ShowResources(parcel);
+        ResourcesDisplayer.ShowResources(parcel);
+        actionPanel.SetActive(true);
         selected = parcel;
 	}
 }

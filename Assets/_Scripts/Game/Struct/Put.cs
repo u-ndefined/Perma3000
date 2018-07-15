@@ -8,7 +8,7 @@ public struct Put
 
     public GameData.Tag tag;
 
-    public Put(Dictionary<GameData.Resource, float> _resources , GameData.Tag _tag)
+    public Put(Dictionary<GameData.Resource, float> _resources , GameData.Tag _tag = GameData.Tag.None)
     {
         resources = _resources;
         tag = _tag;

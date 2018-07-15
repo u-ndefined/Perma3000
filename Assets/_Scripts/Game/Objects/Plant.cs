@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class Plant 
 {
-    private Parcel parcel;
-    private Dictionary<Put, Put> puts;
-    private int range;
+    public Parcel parcel;
+    public Dictionary<Put, Put> puts;
+    public int range;
+    public GameData.plantType type;
+
+    public Plant(GameData.plantType _type, int _range, Dictionary<Put, Put> _puts)
+    {
+        type = _type;
+        range = _range;
+        puts = _puts;
+    }
+
 
     public void GetInputs()
     {
