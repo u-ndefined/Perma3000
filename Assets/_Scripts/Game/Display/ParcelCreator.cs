@@ -8,9 +8,9 @@ public class ParcelCreator
 
     public static void CreateGrid(int radius)
     {
-        Field field = new Field();
-
         GameObject fieldObject = new GameObject("Field");
+
+        Field field = fieldObject.AddComponent<Field>();
 
         HexCoordinates[] hexInRange = HexInRange(new HexCoordinates(0,0), radius);
 
@@ -28,9 +28,9 @@ public class ParcelCreator
         GameObject parcelObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
         parcelObject.name = "Parcel " + coordinates.x + " " + coordinates.z;
         Parcel parcel = parcelObject.AddComponent<Parcel>();
+        parcelObject.AddComponent<InputParcel>();
         parcel.coordinates = coordinates;
         parcel.field = field;
-        field.AddParcel(parcel);
         parcelObject.transform.position = CoordinatesToPosition(coordinates);
         return parcelObject.transform;
     }
@@ -52,7 +52,6 @@ public class ParcelCreator
             for (int y = Mathf.Max(-range, -x-range); y <= Mathf.Min(range, -x+range); y++)
             {
                 int z = -x - y;
-                Debug.Log(i);
                 result[i] = new HexCoordinates(x + center.x, z + center.z);
                 i++;
             }

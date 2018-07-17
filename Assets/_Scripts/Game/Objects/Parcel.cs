@@ -18,6 +18,11 @@ public class Parcel : MonoBehaviour
 
 	}
 
+	private void Start()
+	{
+        field.AddParcel(this);
+	}
+
 	public void AddResource(GameData.Resource type, float quantity)
     {
         if(resources.ContainsKey(type))

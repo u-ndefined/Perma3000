@@ -17,4 +17,9 @@ public class ActionButtons : MonoBehaviour
     {
         plantManager.PlantSeed(plantManager.RandomSeed(), selectionManager.selected);
     }
+
+    public void EndTurn()
+    {
+        plantManager.NextTurn();
+    }
 }

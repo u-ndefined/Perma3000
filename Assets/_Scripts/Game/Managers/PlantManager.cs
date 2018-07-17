@@ -12,6 +12,8 @@ public class PlantManager : ISingleton<PlantManager>
 
     private List<Plant> plants;
 
+    private Field[] fields;
+
 
 	private void Awake()
 	{
@@ -22,7 +24,13 @@ public class PlantManager : ISingleton<PlantManager>
 	private void Start()
 	{
         LoadPreset();
+        GetFields();
 	}
+
+    private void GetFields()
+    {
+        fields = GetComponentsInChildren<Field>();
+    }
 
 	private void LoadPreset()
     {
@@ -57,4 +65,29 @@ public class PlantManager : ISingleton<PlantManager>
             return new Seed(GameData.plantType.Lentils, null, 1, null);
         }
     }
+
+    private void UpdatePants()
+	{
+        for (int i = plants.Count-1; i >= 0; i--)
+        {
+            plants[i].GetInputs();
+        }
+	}
+
+    private void ExecuteOrders()
+    {
+        foreach(Field field in fields)
+        {
+            Debug.Log("ookko");
+            field.ExecuteOrders();
+        }
+    }
+
+    public void NextTurn()
+    {
+        UpdatePants();
+        ExecuteOrders();
+        SelectionManager.Instance.Select(SelectionManager.Instance.selected);
+    }
+
 }

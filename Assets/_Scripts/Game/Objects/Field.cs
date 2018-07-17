@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Field 
+public class Field : MonoBehaviour
 {
 
     private Dictionary<HexCoordinates, Parcel> parcels;
     private List<OutputOrder> orders;
 
-    public Field()
+    private void Awake()
     {
         parcels = new Dictionary<HexCoordinates, Parcel>();
         orders = new List<OutputOrder>();
@@ -21,10 +21,21 @@ public class Field
 
     public void ExecuteOrders()
     {
+        Debug.Log(parcels.Count);
         foreach(OutputOrder order in orders)
         {
-            //do order
+            if(parcels.ContainsKey(order.coordinates))
+            {
+                Debug.Log("erzrzerz");
+                parcels[order.coordinates].AddResource(order.order.Key, order.order.Value);
+            }
+            else
+            {
+                Debug.Log("bizare");
+            }
+
         }
+        orders.Clear();
     }
 
     public void AddParcel(Parcel parcel)
@@ -35,5 +46,5 @@ public class Field
         }
 
     }
-    
+
 }

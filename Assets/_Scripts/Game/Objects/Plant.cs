@@ -19,6 +19,7 @@ public class Plant
 
     public void GetInputs()
     {
+
         foreach(KeyValuePair<Put, Put> put in puts)
         {
             float completion = parcel.GetResources(put.Key);
