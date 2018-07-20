@@ -38,6 +38,7 @@ public class Parcel : MonoBehaviour
         if(resources.ContainsKey(type))
         {
             resources[type] += quantity;
+            if (resources[type] <= 0) resources.Remove(type);
         }
         else
         {
@@ -47,27 +48,43 @@ public class Parcel : MonoBehaviour
 
     public float GetResource(KeyValuePair<GameData.Resource, float> resource)
     {
-        if (resources.ContainsKey(resource.Key))
+        if(resource.Value <= 0)
         {
-            float quantity = resources[resource.Key];
-            float completion = 0;
-
-            if (quantity >= resource.Value)
+            if (resources.ContainsKey(resource.Key))
             {
-                completion = 1;
-                quantity -= resource.Value;
+                if (resource.Value == 0) return 0;
+                float completion = (resources[resource.Key] + resource.Value) / resource.Value;
+                return Mathf.Max(completion, 0);
             }
-            else
-            {
-                completion = quantity / resource.Value;
-                quantity = 0;
-            }
-
-            return completion;
+            else return 1;
         }
         else
         {
-            return 0;
+            if (resources.ContainsKey(resource.Key))
+            {
+                float quantity = resources[resource.Key];
+                float completion = 0;
+
+                if (quantity >= resource.Value)
+                {
+                    completion = 1;
+                    quantity -= resource.Value;
+                }
+                else
+                {
+                    completion = quantity / resource.Value;
+                    quantity = 0;
+                }
+
+                if (quantity <= 0) resources.Remove(resource.Key);
+                else resources[resource.Key] = quantity;
+
+                return completion;
+            }
+            else
+            {
+                return 0;
+            } 
         }
     }
 

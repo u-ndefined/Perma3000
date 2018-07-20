@@ -46,15 +46,11 @@ public class SelectionManager : ISingleton<SelectionManager> {
         else plantDisplayer.HidePlant();
 	}
 
-    public void RefreshResourceDisplayer()
+    public void Refresh()
     {
-        resourcesDisplayer.m_tableView.ReloadData();
+        Select(selected);
     }
 
-    public void RefreshPlantDisplayer()
-    {
-        plantDisplayer.m_tableView.ReloadData();
-    }
 
 
 }

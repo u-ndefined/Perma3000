@@ -16,12 +16,12 @@ public class ActionButtons : MonoBehaviour
 	public void Plant()
     {
         plantManager.PlantSeed(plantManager.RandomSeed(), selectionManager.selected);
-        selectionManager.Select(selectionManager.selected);
+        selectionManager.Refresh();
     }
 
     public void EndTurn()
     {
         plantManager.NextTurn();
-        selectionManager.RefreshResourceDisplayer();
+        selectionManager.Refresh();
     }
 }

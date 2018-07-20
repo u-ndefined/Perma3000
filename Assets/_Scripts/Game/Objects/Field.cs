@@ -21,12 +21,10 @@ public class Field : MonoBehaviour
 
     public void ExecuteOrders()
     {
-        Debug.Log(parcels.Count);
         foreach(OutputOrder order in orders)
         {
             if(parcels.ContainsKey(order.coordinates))
-            {
-                Debug.Log("erzrzerz");
+            {                
                 parcels[order.coordinates].AddResource(order.order.Key, order.order.Value);
             }
             else
