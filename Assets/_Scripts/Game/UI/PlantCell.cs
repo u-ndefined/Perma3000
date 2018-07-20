@@ -9,37 +9,15 @@ using UnityEngine.Events;
 
 public class PlantCell : TableViewCell 
 {
-    TextMeshProUGUI inputText;
-    TextMeshProUGUI outputText;
-    public Slider m_cellHeightSlider;
+    public TextMeshProUGUI inputText;
+    public TextMeshProUGUI outputText;
+    public float height;
 
     public int rowNumber
     {
         get; set;
     }
 
-    [System.Serializable]
-    public class CellHeightChangedEvent : UnityEvent<int, float>
-    {
-    }
-    public CellHeightChangedEvent onCellHeightChanged;
-
-    public void SliderValueChanged(float value)
-    {
-        onCellHeightChanged.Invoke(rowNumber, value);
-    }
-
-    public float height
-    {
-        get
-        {
-            return m_cellHeightSlider.value;
-        }
-        set
-        {
-            m_cellHeightSlider.value = value;
-        }
-    }
 
     public void SetContent(KeyValuePair<Put,Put> puts)
     {

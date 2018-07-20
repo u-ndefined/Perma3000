@@ -29,6 +29,7 @@ public class SelectionManager : ISingleton<SelectionManager> {
     public void Unselect()
     {
         resourcesDisplayer.HideResources();
+        plantDisplayer.HidePlant();
         actionPanel.SetActive(false);
         selected = null;
     }
@@ -38,5 +39,22 @@ public class SelectionManager : ISingleton<SelectionManager> {
         resourcesDisplayer.ShowResources(parcel);
         actionPanel.SetActive(true);
         selected = parcel;
+
+        Plant plant = PlantManager.Instance.GetPlant(parcel.coordinates);
+
+        if (plant != null) plantDisplayer.ShowPlant(plant);
+        else plantDisplayer.HidePlant();
 	}
+
+    public void RefreshResourceDisplayer()
+    {
+        resourcesDisplayer.m_tableView.ReloadData();
+    }
+
+    public void RefreshPlantDisplayer()
+    {
+        plantDisplayer.m_tableView.ReloadData();
+    }
+
+
 }

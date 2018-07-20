@@ -95,7 +95,15 @@ public class PlantManager : ISingleton<PlantManager>
     {
         UpdatePants();
         ExecuteOrders();
-        SelectionManager.Instance.Select(SelectionManager.Instance.selected);
+    }
+
+    public Plant GetPlant(HexCoordinates coordinates)
+    {
+        foreach(Plant p in plants)
+        {
+            if (p.parcel.coordinates == coordinates) return p;
+        }
+        return null;
     }
 
 }

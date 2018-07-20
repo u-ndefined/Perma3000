@@ -35,4 +35,24 @@ public struct HexCoordinates
     {
         return x.ToString() + "\n" + y.ToString() + "\n" + z.ToString();
     }
+
+    public static bool operator ==(HexCoordinates a, HexCoordinates b)
+    {
+        // an item is always equal to itself
+        if (object.ReferenceEquals(a, b))
+            return true;
+
+        // if both a and b were null, we would have already escaped so check if either is null
+        if (object.ReferenceEquals(a, null))
+            return false;
+        if (object.ReferenceEquals(b, null))
+            return false;
+        // Now that we've made sure we are working with real objects:
+        return a.x == b.x && a.y == b.y;
+    }
+
+    public static bool operator !=(HexCoordinates a, HexCoordinates b)
+    {
+        return !(a == b);
+    }
 }

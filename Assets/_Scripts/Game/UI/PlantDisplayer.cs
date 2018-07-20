@@ -51,10 +51,9 @@ public class PlantDisplayer : MonoBehaviour, ITableViewDataSource
         {
             cell = (PlantCell)GameObject.Instantiate(m_cellPrefab);
             cell.name = "PlantCellInstance_" + (++m_numInstancesCreated).ToString();
-            cell.onCellHeightChanged.AddListener(OnCellHeightChanged);
+            //cell.onCellHeightChanged.AddListener(OnCellHeightChanged);
         }
         cell.rowNumber = row;
-        cell.height = GetHeightOfRow(row);
         cell.SetContent(puts[row]);
         return cell;
     }
@@ -73,16 +72,6 @@ public class PlantDisplayer : MonoBehaviour, ITableViewDataSource
         }
     }
 
-    private void OnCellHeightChanged(int row, float newHeight)
-    {
-        if (GetHeightOfRow(row) == newHeight)
-        {
-            return;
-        }
-        //Debug.Log(string.Format("Cell {0} height changed to {1}", row, newHeight));
-        m_customRowHeights[row] = newHeight;
-        m_tableView.NotifyCellDimensionsChanged(row);
-    }
 
 
 
@@ -96,7 +85,7 @@ public class PlantDisplayer : MonoBehaviour, ITableViewDataSource
 
     }
 
-    public void HideResources()
+    public void HidePlant()
     {
         displayer.SetActive(false);
     }
@@ -104,9 +93,12 @@ public class PlantDisplayer : MonoBehaviour, ITableViewDataSource
     private void LoadPlant(Dictionary<Put,Put> newPuts)
     {
         puts.Clear();
+        m_customRowHeights.Clear();
         foreach (KeyValuePair<Put, Put> p in newPuts)
         {
+            m_customRowHeights.Add(puts.Count, 10 + Mathf.Max(p.Key.resources.Count, p.Value.resources.Count) * 15);
             puts.Add(p);
+           
         }
         m_numRows = puts.Count;
     }
