@@ -14,6 +14,12 @@ public static class GameData
     {
         Water,
         Stuff,
+        A,
+        B,
+        C,
+        D,
+        E,
+        F,
         None
     }
 

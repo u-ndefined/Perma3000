@@ -6,14 +6,17 @@ public class SelectionManager : ISingleton<SelectionManager> {
 
     protected SelectionManager(){}
 
-    private ResourcesDisplayer ResourcesDisplayer;
+    private ResourcesDisplayer resourcesDisplayer;
+    private PlantDisplayer plantDisplayer;
     private GameObject actionPanel;
 
     public Parcel selected;
 
     private void Awake()
     {
-        ResourcesDisplayer = GameObject.Find("ResourcePanel").GetComponent<ResourcesDisplayer>();
+        resourcesDisplayer = GetComponentInChildren<ResourcesDisplayer>();
+        plantDisplayer = GetComponentInChildren<PlantDisplayer>();
+
         actionPanel = GameObject.Find("ActionPanel");
 
     }
@@ -25,14 +28,14 @@ public class SelectionManager : ISingleton<SelectionManager> {
 
     public void Unselect()
     {
-        ResourcesDisplayer.HideResources();
+        resourcesDisplayer.HideResources();
         actionPanel.SetActive(false);
         selected = null;
     }
 
 	public void Select(Parcel parcel)
 	{
-        ResourcesDisplayer.ShowResources(parcel);
+        resourcesDisplayer.ShowResources(parcel);
         actionPanel.SetActive(true);
         selected = parcel;
 	}

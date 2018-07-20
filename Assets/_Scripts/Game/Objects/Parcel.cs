@@ -8,6 +8,7 @@ public class Parcel : MonoBehaviour
     public Field field;
     public Dictionary<GameData.Resource, float> resources;
     public HexCoordinates coordinates;
+    public bool empty;
 
 	private void Awake()
 	{
@@ -15,6 +16,15 @@ public class Parcel : MonoBehaviour
 
         AddResource(GameData.Resource.Water, (float)Math.Round(UnityEngine.Random.Range(0, 5.0f), 2));
         AddResource(GameData.Resource.Stuff, (float)Math.Round(UnityEngine.Random.Range(0,5.0f), 2));
+        AddResource(GameData.Resource.A, (float)Math.Round(UnityEngine.Random.Range(0, 5.0f), 2));
+        AddResource(GameData.Resource.B, (float)Math.Round(UnityEngine.Random.Range(0, 5.0f), 2));
+        AddResource(GameData.Resource.C, (float)Math.Round(UnityEngine.Random.Range(0, 5.0f), 2));
+        AddResource(GameData.Resource.D, (float)Math.Round(UnityEngine.Random.Range(0, 5.0f), 2));
+        AddResource(GameData.Resource.E, (float)Math.Round(UnityEngine.Random.Range(0, 5.0f), 2));
+        AddResource(GameData.Resource.F, (float)Math.Round(UnityEngine.Random.Range(0, 5.0f), 2));
+
+
+        empty = true;
 
 	}
 

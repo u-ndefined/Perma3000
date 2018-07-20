@@ -43,9 +43,18 @@ public class PlantManager : ISingleton<PlantManager>
 
     public void PlantSeed(Seed seed, Parcel parcel)
     {
-        Plant plant = SeedToPlant(seed);
-        plant.parcel = parcel;
-        plants.Add(plant);
+        if(parcel.empty)
+        {
+            parcel.empty = false;
+            Plant plant = SeedToPlant(seed);
+            plant.parcel = parcel;
+            plants.Add(plant);
+        }
+        else
+        {
+            Debug.Log("not empty");
+        }
+       
     }
 
     private Plant SeedToPlant(Seed seed)
@@ -78,7 +87,6 @@ public class PlantManager : ISingleton<PlantManager>
     {
         foreach(Field field in fields)
         {
-            Debug.Log("ookko");
             field.ExecuteOrders();
         }
     }
