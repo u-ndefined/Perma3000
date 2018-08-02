@@ -7,7 +7,7 @@ using System.Text;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class PlantCell : TableViewCell 
+public class PlantCell : UICell 
 {
     public TextMeshProUGUI inputText;
     public TextMeshProUGUI outputText;

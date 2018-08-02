@@ -35,5 +35,13 @@ public static class GameData
         Tomatoes
     }
 
+    public enum Panel
+    {
+        Actions,
+        Parcel,
+        ParcelPlant,
+        Plants
+    }
+
    
 }

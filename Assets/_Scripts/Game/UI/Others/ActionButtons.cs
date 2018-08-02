@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionButtons : MonoBehaviour 
+public class ActionButtons : UIPanel 
 {
     PlantManager plantManager;
     SelectionManager selectionManager;

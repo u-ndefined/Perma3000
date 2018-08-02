@@ -22,3 +22,36 @@ MonoBehaviour:
     outputs:
     - type: 0
       quantity: 5
+  - tag: 0
+    inputs:
+    - type: 0
+      quantity: 1
+    - type: 1
+      quantity: 1
+    outputs:
+    - type: 2
+      quantity: 5
+    - type: 3
+      quantity: 5
+    - type: 4
+      quantity: 5
+  - tag: 0
+    inputs:
+    - type: 0
+      quantity: 1
+    outputs:
+    - type: 2
+      quantity: 5
+  - tag: 0
+    inputs:
+    - type: 0
+      quantity: 1
+    - type: 1
+      quantity: 1
+    - type: 2
+      quantity: 1
+    outputs:
+    - type: 2
+      quantity: 5
+    - type: 3
+      quantity: 5

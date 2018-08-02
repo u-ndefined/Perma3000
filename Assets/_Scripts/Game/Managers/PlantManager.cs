@@ -48,6 +48,7 @@ public class PlantManager : ISingleton<PlantManager>
             parcel.empty = false;
             Plant plant = SeedToPlant(seed);
             plant.parcel = parcel;
+            parcel.plant = plant;
             plants.Add(plant);
         }
         else

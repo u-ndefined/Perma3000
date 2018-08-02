@@ -9,6 +9,7 @@ public class Parcel : MonoBehaviour
     public Dictionary<GameData.Resource, float> resources;
     public HexCoordinates coordinates;
     public bool empty;
+    public Plant plant;
 
 	private void Awake()
 	{

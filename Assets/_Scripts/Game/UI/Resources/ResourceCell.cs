@@ -5,7 +5,7 @@ using Tacticsoft;
 using TMPro;
 using System.Text;
 
-public class ResourceCell : TableViewCell 
+public class ResourceCell : UICell 
 {
     public TextMeshProUGUI ressource;
     public TextMeshProUGUI quantity;

@@ -6,44 +6,35 @@ public class SelectionManager : ISingleton<SelectionManager> {
 
     protected SelectionManager(){}
 
-    private ResourcesDisplayer resourcesDisplayer;
-    private PlantDisplayer plantDisplayer;
-    private GameObject actionPanel;
+    UIManager UI;
 
     public Parcel selected;
 
     private void Awake()
     {
-        resourcesDisplayer = GetComponentInChildren<ResourcesDisplayer>();
-        plantDisplayer = GetComponentInChildren<PlantDisplayer>();
-
-        actionPanel = GameObject.Find("ActionPanel");
+        UI = UIManager.Instance;
 
     }
 
 	private void Start()
 	{
-        Unselect();
+        //Unselect();
 	}
 
     public void Unselect()
     {
-        resourcesDisplayer.HideResources();
-        plantDisplayer.HidePlant();
-        actionPanel.SetActive(false);
         selected = null;
+        UI.HideAll();
     }
 
 	public void Select(Parcel parcel)
 	{
-        resourcesDisplayer.ShowResources(parcel);
-        actionPanel.SetActive(true);
+        UI.HideAll();
         selected = parcel;
-
-        Plant plant = PlantManager.Instance.GetPlant(parcel.coordinates);
-
-        if (plant != null) plantDisplayer.ShowPlant(plant);
-        else plantDisplayer.HidePlant();
+        UI.Show(GameData.Panel.Actions);
+        UI.Show(GameData.Panel.Parcel);
+        if (!parcel.empty) UI.Show(GameData.Panel.ParcelPlant);
+        else UI.Hide(GameData.Panel.ParcelPlant);
 	}
 
     public void Refresh()
