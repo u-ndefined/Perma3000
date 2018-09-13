@@ -40,7 +40,8 @@ public static class GameData
         Actions,
         Parcel,
         ParcelPlant,
-        Plants
+        Seeds,
+        EndTurn
     }
 
    

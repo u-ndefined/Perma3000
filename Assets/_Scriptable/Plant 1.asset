@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32fe710ccdf744cb8b9136f6c01c93a0, type: 3}
-  m_Name: Plant
+  m_Name: Plant 1
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
-  type: 0
+  icon: {fileID: 21300020, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
+  type: 1
   range: 1
   inputsOutputs:
   - tag: 0

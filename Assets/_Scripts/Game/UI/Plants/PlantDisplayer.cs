@@ -52,12 +52,12 @@ public class PlantDisplayer : UITable
 
         puts.Clear();
         m_customRowHeights.Clear();
-        foreach (KeyValuePair<Put, Put> p in plant.puts)
-        {
-            m_customRowHeights.Add(puts.Count, 10 + Mathf.Max(p.Key.resources.Count, p.Value.resources.Count) * 15);
-            puts.Add(p);
+        //foreach (KeyValuePair<Put, Put> p in plant.puts)
+        //{
+        //    m_customRowHeights.Add(puts.Count, 10 + Mathf.Max(p.Key.resources.Count, p.Value.resources.Count) * 15);
+        //    puts.Add(p);
 
-        }
+        //}
         m_numRows = puts.Count;
 
         base.ReloadData();

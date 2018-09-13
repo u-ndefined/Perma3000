@@ -26,10 +26,10 @@ public class ResourcesDisplayer : UITable
 
         resources.Clear();
 
-        foreach (KeyValuePair<GameData.Resource, float> r in parcel.resources)
-        {
-            resources.Add(r);
-        }
+        //foreach (KeyValuePair<GameData.Resource, float> r in parcel.resources)
+        //{
+        //    resources.Add(r);
+        //}
         m_numRows = resources.Count;
         
         base.ReloadData();

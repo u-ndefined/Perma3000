@@ -29,12 +29,12 @@ public class SelectionManager : ISingleton<SelectionManager> {
 
 	public void Select(Parcel parcel)
 	{
-        UI.HideAll();
+        //UI.HideAll();
         selected = parcel;
-        UI.Show(GameData.Panel.Actions);
-        UI.Show(GameData.Panel.Parcel);
-        if (!parcel.empty) UI.Show(GameData.Panel.ParcelPlant);
-        else UI.Hide(GameData.Panel.ParcelPlant);
+        //UI.Show(GameData.Panel.Actions);
+        //UI.Show(GameData.Panel.Parcel);
+        //if (!parcel.empty) UI.Show(GameData.Panel.ParcelPlant);
+        //else UI.Hide(GameData.Panel.ParcelPlant);
 	}
 
     public void Refresh()

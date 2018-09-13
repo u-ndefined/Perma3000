@@ -23,14 +23,12 @@ public class UIManager : ISingleton<UIManager>
         SetPanels();
         HideAll();
         Show(GameData.Panel.Actions);
-        Debug.Log("okok");
 	}
 
 	public void Show(GameData.Panel panel)
     {
         if (panels.ContainsKey(panel))
         {
-            Debug.Log("okok");
             panels[panel].Show();
         }
     }
@@ -45,14 +43,14 @@ public class UIManager : ISingleton<UIManager>
 
     private void SetPanels()
     {
-        int i = 0;
-        foreach (GameData.Panel p in Enum.GetValues(typeof(GameData.Panel)))
-        {
-            Debug.Log(p.ToString() + "  " + panelObjects[i].name + "   " + panelObjects[i].GetComponent<UIPanel>().GetType().ToString());
-            panels.Add(p, panelObjects[i].GetComponent<UIPanel>());
-            i++;
+        //int i = 0;
+        //foreach (GameData.Panel p in Enum.GetValues(typeof(GameData.Panel)))
+        //{
+        //    Debug.Log(p.ToString() + "  " + panelObjects[i].name + "   " + panelObjects[i].GetComponent<UIPanel>().GetType().ToString());
+        //    panels.Add(p, panelObjects[i].GetComponent<UIPanel>());
+        //    i++;
 
-        } 
+        //} 
     }
 
     public void HideAll()

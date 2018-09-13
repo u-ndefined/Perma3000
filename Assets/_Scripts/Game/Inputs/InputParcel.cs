@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class InputParcel : MonoBehaviour, IPointerClickHandler
 {
-    Parcel parcel;
+    private Parcel parcel;
 
 	private void Awake()
 	{
@@ -14,6 +14,7 @@ public class InputParcel : MonoBehaviour, IPointerClickHandler
 
 	public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("hello");
         SelectionManager.Instance.Select(parcel);
     }
 }
