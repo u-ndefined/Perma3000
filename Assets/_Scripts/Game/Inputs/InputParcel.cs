@@ -14,7 +14,6 @@ public class InputParcel : MonoBehaviour, IPointerClickHandler
 
 	public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("hello");
         SelectionManager.Instance.Select(parcel);
     }
 }

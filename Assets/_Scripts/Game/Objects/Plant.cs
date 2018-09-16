@@ -5,16 +5,23 @@ using UnityEngine;
 public class Plant 
 {
     public Parcel parcel;
+    public PlantBase plantBase;
+
+
     public Dictionary<GameData.Resource, float> inputs;
     public Dictionary<GameData.Resource, float> outputs;
     public GameData.plantType type;
     public float HP;
 
-    public Plant(GameData.plantType _type, int _range, Dictionary<GameData.Resource, float> _inputs, Dictionary<GameData.Resource, float> _outputs)
+    private int growthStep;
+
+    public Plant(PlantBase _plantBase)
     {
-        type = _type;
-        inputs = _inputs;
-        outputs = _outputs;
+        plantBase = _plantBase;
+        type = plantBase.type;
+        inputs = plantBase.ArrayToDictionary(plantBase.editorInputs);
+        outputs = plantBase.ArrayToDictionary(plantBase.editorOutputs);
+        HP = plantBase.HP;
     }
 
     private void CheckInputs()
@@ -26,6 +33,31 @@ public class Plant
 
     }
 
+    private void Grow()
+    {
+        if(plantBase.harvestable && growthStep < plantBase.harvestTime)
+        {
+            growthStep++;
+        }
+
+        plantBase.Grow();
+    }
+
+    private void Harvest()
+    {
+        growthStep = 0;
+        plantBase.Harvest();
+    }
+
+    public Dictionary<GameData.Resource, float> GetInputs()
+    {
+        return plantBase.GetInputs();
+    }
+
+    public Dictionary<GameData.Resource, float> GetOutputs()
+    {
+        return plantBase.GetOutputs();
+    }
 
 
 }

@@ -25,31 +25,18 @@ public class Field : MonoBehaviour
 
         foreach(KeyValuePair<HexCoordinates, Plant> plant in plants)
         {
-            AddToDictionary(trends, plant.Value.inputs);
-            AddToDictionary(trends, plant.Value.outputs);
+            DictionnaryModifier.AddToDictionary(trends, plant.Value.inputs);
+            DictionnaryModifier.AddToDictionary(trends, plant.Value.outputs);
         }
 
         return trends;
     }
 
-    private void AddToDictionary(Dictionary<GameData.Resource, float> receiver, Dictionary<GameData.Resource, float> sender)
-    {
-        foreach(KeyValuePair<GameData.Resource, float> resource in sender)
-        {
-            if(receiver.ContainsKey(resource.Key))
-            {
-                receiver[resource.Key] += resource.Value;
-            }
-            else
-            {
-                receiver.Add(resource.Key, resource.Value);
-            }
-        }
-    }
+
 
     private void ApplyTrend()
     {
-        AddToDictionary(resources, trends);
+        DictionnaryModifier.AddToDictionary(resources, trends);
     }
 
 

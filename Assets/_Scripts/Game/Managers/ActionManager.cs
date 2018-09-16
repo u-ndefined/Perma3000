@@ -5,15 +5,33 @@ using UnityEngine;
 public class ActionManager : ISingleton<ActionManager>
 {
     protected ActionManager() {}
-    
-    PlantManager plantManager;
-    SelectionManager selectionManager;
 
-    //private void Awake()
-    //{
-    //    plantManager = PlantManager.Instance;
-    //    selectionManager = SelectionManager.Instance;
-    //}
+    private SelectionManager selectionManager;
+
+    private float actions;
+
+    private void Awake()
+    {
+        selectionManager = SelectionManager.Instance;
+    }
+
+    private void EndTurn()
+    {
+        
+    }
+
+    private void Plant()
+    {
+        
+    }
+
+    private void PullOut()
+    {
+        
+    }
+
+
+
 
     //public void Plant(Seed seed)
     //{
